@@ -1,0 +1,61 @@
+
+{%load static%}
+{% include 'header.html' %}
+
+
+<div class="container-fluid mb-4">
+    <div class="container">
+        <div class="col-12 text-center contact_margin_svnit ">
+            <div class="text-center fh5co_heading py-2">Post Deal</div>
+
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-9 mx-auto">
+                <form class="row" id="fh5co_contact_form" method="post" action="/post_deal/" enctype="multipart/form-data">
+                   {% csrf_token %}
+                    <div class="col-12 py-3">
+                        <label>Deal Title</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="deal_title" />
+                    </div>
+                      <div class="col-12 py-3">
+                         <label>Deal Description</label>
+                        <textarea class="form-control fh5co_contacts_message" name="deal_desc"></textarea>
+                    </div>
+                     <div class="col-12 py-3">
+                        <label>Category</label>
+                        <select class="form-control" name="category"  data-rule="required" data-msg="Please write something for us" >
+                        <option>--Choose Category--</option>
+                        {% for i in category %}
+                        <option value="{{i.id}}">{{i}}</option>
+                        {% endfor %}
+                         </select>
+                     </div>
+
+                    <div class="col-6 py-3">
+                        <label>StartDate</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="deal_startdate" />
+                    </div>
+                     <div class="col-6 py-3">
+                        <label>EndDate</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="deal_enddate" />
+                    </div>
+                    <div class="col-6 py-3">
+                        <label>Deal Actualprice(Rs.)</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="deal_actualprice" />
+                    </div>
+                      <div class="col-6 py-3">
+                        <label>Deal Discount(%)</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="deal_discount" />
+                    </div>
+                    <div class="col-6 py-3">
+                        <label>Deal Price(Rs)</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="deal_price" />
+                    </div>
+                    <div class="col-12 py-3 text-center"> <input type="submit" class="btn contact_btn" value="Post Deal"/> </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}

@@ -1,0 +1,78 @@
+
+{%load static%}
+{% include 'header.html' %}
+
+
+<div class="container-fluid pb-4 pt-4 paddding">
+    <div class="container paddding">
+        <div class="row mx-0">
+            <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Deals</div>
+                    <div class="badge badge-danger p-2 mb-3 text-uppercase">Best Seller</div>
+                </div>
+                {% for i in dealdata %}
+                <div class="row pb-4">
+                    <div class="col-md-9">
+                        <div class="fh5co_hover_news_img">
+                             <a href="single.html" class="fh5co_magna py-2"> {{i.deal_title}}  </a><p><a href="single.html" class="fh5co_mini_time py-3"> Thomson Smith -
+                            April 18,2016 </a></p>
+                            <p class="text-success">Free Cancellation</p>
+                            <div class="fh5co_consectetur">Valid for : 1 Person  Valid on : All Days Timings : 10 AM - 7 PM
+                            </div>
+                            <div class="fh5co_consectetur pt-3"><input type="button" value="Details" class="btn btn-outline-primary"/>
+                            <a href="/editdeal/{{i.id}}/" class="btn btn-outline-primary">Edit Deal</a>
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 animate-box">
+
+                        <div class="fh5co_consectetur"><span class="badge badge-primary p-2">{{i.deal_discount}}% OFF</span>
+                        </div>
+                        <div class="fh5co_consectetur"><s>Rs. {{i.deal_actualprice}} </s>Rs. {{i.deal_price}}
+                            <p>Inc. of all taxes</p>
+                        </div>
+                        <div class="fh5co_consectetur pt-3">
+                            <form class="checkout-form" method="post"  action="/add_to_cart/{{i.id}}/">
+              	                {% csrf_token %}
+                            <input type="submit" value="Delete" class="btn btn-danger"/>
+                            </form>
+                            </div>
+                    </div>
+                </div>
+                  {% endfor %}
+
+
+
+
+
+            </div>
+            <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="fh5co_tags_all">
+                    <a href="#" class="fh5co_tagg">Business</a>
+                    <a href="#" class="fh5co_tagg">Technology</a>
+                    <a href="#" class="fh5co_tagg">Sport</a>
+                    <a href="#" class="fh5co_tagg">Art</a>
+                    <a href="#" class="fh5co_tagg">Lifestyle</a>
+                    <a href="#" class="fh5co_tagg">Three</a>
+                    <a href="#" class="fh5co_tagg">Photography</a>
+                    <a href="#" class="fh5co_tagg">Lifestyle</a>
+                    <a href="#" class="fh5co_tagg">Art</a>
+                    <a href="#" class="fh5co_tagg">Education</a>
+                    <a href="#" class="fh5co_tagg">Social</a>
+                    <a href="#" class="fh5co_tagg">Three</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% include 'footer.html' %}

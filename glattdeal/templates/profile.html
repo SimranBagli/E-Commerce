@@ -1,0 +1,99 @@
+
+{%load static%}
+{% include 'header.html' %}
+
+
+	<main id="main">
+
+              	{% csrf_token %}
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact">
+        <form class="checkout-form" method="post" action="/uprofile/" enctype="multipart/form-data">
+            {% csrf_token %}
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <h5></h5>
+            {% if u.user_info != None %}
+            <img src="{{u.user_image.url}}" height="200" width="200"/>
+            {% endif %}
+             <div class="form-row">
+                <div class="col-lg-12 form-group">
+					<p>{{u.user_fname}} {{u.user_lname}}</p>
+					<p>{{u.user_city}} </p>
+                  <input type="file" name="user_image" class="form-control"   /><br/>
+                    <p>{{u.user_info}} </p>
+                  <div class="validate"></div>
+                </div>
+
+              </div>
+          </div>
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="300">
+			  <h4 class="mb-3">User Profile</h4>
+
+
+              <div class="form-row">
+                <div class="col-lg-12 form-group">
+					<label>User Info</label>
+                  <textarea name="user_info" class="form-control" >{{u.user_info}} {% if user.user_info == None %}  {% endif %}</textarea>
+                  <div class="validate"></div>
+                </div>
+
+              </div>
+              <div class="form-row">
+                <div class="col-lg-12 form-group">
+					<label>Email id</label>
+                  <input type="text" name="email_id" class="form-control" id="name"  value="{{u.email}}"   {% if u.email_id == None %} value="" {% else %}  value="{{user.email_id}}" {% endif %} readonly />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-lg-12 form-group">
+					<label>Firstname</label>
+                  <input type="text" name="user_fname" class="form-control" value="{{u.user_fname}}"  {% if u.user_fname == None %} value=""  {% endif %} />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-lg-12 form-group">
+					<label>Lastname</label>
+                  <input type="text" name="user_lname" class="form-control"  value="{{u.user_lname}}"  {% if u.user_lname == None %} value="" {% endif %} />
+                  <div class="validate"></div>
+                </div>
+              </div>
+               <div class="form-row">
+                <div class="col-lg-12 form-group">
+					<label>Location</label>
+                  <input type="text" name="user_city" class="form-control"  value="{{u.user_city}}" {% if u.user_city == None %} value="" {% endif %} />
+                  <div class="validate"></div>
+                </div>
+              </div>
+                <div class="form-row">
+                <div class="col-lg-12 form-group">
+					<label>Phone no.</label>
+                  <input type="text" name="user_phone" class="form-control"  value="{{u.user_phone}}" {% if u.user_phone == None %} value="" {% endif %}/>
+                  <div class="validate"></div>
+                </div>
+              </div>
+
+
+              <div><button type="submit" class="btn btn-primary">Update Profile</button></div>
+
+          </div>
+
+        </div>
+
+      </div>
+               </form>
+    </section><!-- End Contact Us Section -->
+
+
+  </main><!-- End #main -->
+
+
+
+	
+
+
+{% include 'footer.html' %}

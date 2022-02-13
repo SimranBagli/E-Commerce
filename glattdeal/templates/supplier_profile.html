@@ -1,0 +1,133 @@
+
+{%load static%}
+{% include 'header.html' %}
+
+
+<div class="container-fluid mb-4">
+    <div class="container">
+        <div class="col-12  col-md-12 text-center contact_margin_svnit ">
+            <div class="text-center fh5co_heading py-2">Supplier Profile</div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-9">
+                <form class="row" id="fh5co_contact_form" method="post" action="/supplier_profile/" enctype="multipart/form-data">
+                   {% csrf_token %}
+                    <div class="col-12 py-3">
+                        <label>Name</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_name" value="{{sdata.supplier_name}}"/>
+                    </div>
+                    <div class="col-12 py-3">
+                         <label>Email</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_email" readonly value="{{sdata.supplier_email}}" />
+                    </div>
+
+                     <div class="col-12 py-3">
+                         <label>Address</label>
+                        <textarea class="form-control fh5co_contacts_message" name="supplier_address">{{sdata.supplier_address}}</textarea>
+                    </div>
+                    <div class="col-12 py-3">
+                         <label>Supplier Contact</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_contact"  value="{{sdata.supplier_contact}}"/>
+                    </div>
+                     <div class="col-12 py-3">
+                         <label>Supplier Details</label>
+                        <textarea class="form-control fh5co_contacts_message" name="supplier_details" >{{sdata.supplier_details}}</textarea>
+                    </div>
+                    <div class="col-12 py-3">
+                        <label>Supplier Image1</label>
+                        <input type="file" class="form-control fh5co_contact_text_box" name="supplier_image1" />
+                        <img src="{{sdata.supplier_image1.url}}" height="100px" width="100px"/>
+                    </div>
+                     <div class="col-12 py-3">
+                        <label>Supplier Image2</label>
+                        <input type="file" class="form-control fh5co_contact_text_box" name="supplier_image2" />
+                         <img src="{{sdata.supplier_image2.url}}" height="100px" width="100px"/>
+                    </div>
+                     <div class="col-12 py-3">
+                        <label>Supplier Image3</label>
+                        <input type="file" class="form-control fh5co_contact_text_box" name="supplier_image3" />
+                         <img src="{{sdata.supplier_image3.url}}" height="100px" width="100px"/>
+                    </div>
+                     <div class="col-12 py-3">
+                        <label>Location</label>
+                        <select class="form-control" name="location"  data-rule="required" data-msg="Please write something for us" >
+                        <option>--Choose Location--</option>
+                        {% for i in location %}
+                        <option value="{{i.id}}" {% if sdata.location == i %} selected="selected" {% endif %}>{{i}}</option>
+                         {% endfor %}
+                         </select>
+                     </div>
+                    <div class="col-6 py-3">
+                        <label>Start Time</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_starttime" value="{{sdata.supplier_starttime}}" />
+                    </div>
+                    <div class="col-6 py-3">
+                        <label>Endtime</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_endtime" value="{{sdata.supplier_endtime}}" />
+                    </div>
+                    <div class="col-12 py-3 text-center"> <input type="submit" class="btn contact_btn" value="Update Profile"/> </div>
+                </form>
+            </div>
+               <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="fh5co_tags_all">
+                    <a href="#" class="fh5co_tagg">Business</a>
+                    <a href="#" class="fh5co_tagg">Technology</a>
+                    <a href="#" class="fh5co_tagg">Sport</a>
+                    <a href="#" class="fh5co_tagg">Art</a>
+                    <a href="#" class="fh5co_tagg">Lifestyle</a>
+                    <a href="#" class="fh5co_tagg">Three</a>
+                    <a href="#" class="fh5co_tagg">Photography</a>
+                    <a href="#" class="fh5co_tagg">Lifestyle</a>
+                    <a href="#" class="fh5co_tagg">Art</a>
+                    <a href="#" class="fh5co_tagg">Education</a>
+                    <a href="#" class="fh5co_tagg">Social</a>
+                    <a href="#" class="fh5co_tagg">Three</a>
+                </div>
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Most Popular</div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-5 align-self-center">
+                        <img src="images/download (1).jpg" alt="img" class="fh5co_most_trading"/>
+                    </div>
+                    <div class="col-7 paddding">
+                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                        <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-5 align-self-center">
+                        <img src="images/allef-vinicius-108153.jpg" alt="img" class="fh5co_most_trading"/>
+                    </div>
+                    <div class="col-7 paddding">
+                        <div class="most_fh5co_treding_font"> Enim ad minim veniam nostrud xercitation ullamco.</div>
+                        <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-5 align-self-center">
+                        <img src="images/download (2).jpg" alt="img" class="fh5co_most_trading"/>
+                    </div>
+                    <div class="col-7 paddding">
+                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                        <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-5 align-self-center"><img src="images/seth-doyle-133175.jpg" alt="img"
+                                                              class="fh5co_most_trading"/></div>
+                    <div class="col-7 paddding">
+                        <div class="most_fh5co_treding_font"> Magna aliqua ut enim ad minim veniam quis nostrud.</div>
+                        <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}

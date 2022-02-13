@@ -1,0 +1,80 @@
+
+{%load static%}
+{% include 'header.html' %}
+
+
+<div class="container-fluid mb-4">
+    <div class="container">
+        <div class="col-12  col-md-12 text-center contact_margin_svnit ">
+            <div class="text-center fh5co_heading py-2">Supplier SignUp</div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-9 mx-auto">
+                <form class="row" id="fh5co_contact_form" method="post" action="/supplier_register/" enctype="multipart/form-data">
+                   {% csrf_token %}
+                    <div class="col-12 py-3">
+                        <label>Name</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_name" />
+                    </div>
+                    <div class="col-12 py-3">
+                         <label>Email</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_email" />
+                    </div>
+                    <div class="col-6 py-3">
+                         <label>Username</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_username"  />
+                    </div>
+                     <div class="col-6 py-3">
+                         <label>Password</label>
+                        <input type="password" class="form-control fh5co_contact_text_box" name="supplier_password"  />
+                    </div>
+
+                     <div class="col-12 py-3">
+                         <label>Address</label>
+                        <textarea class="form-control fh5co_contacts_message" name="supplier_address"></textarea>
+                    </div>
+                    <div class="col-12 py-3">
+                         <label>Supplier Contact</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_contact" />
+                    </div>
+                     <div class="col-12 py-3">
+                         <label>Supplier Details</label>
+                        <textarea class="form-control fh5co_contacts_message" name="supplier_details" ></textarea>
+                    </div>
+                    <div class="col-12 py-3">
+                        <label>Supplier Image1</label>
+                        <input type="file" class="form-control fh5co_contact_text_box" name="supplier_image1" />
+                    </div>
+                     <div class="col-12 py-3">
+                        <label>Supplier Image2</label>
+                        <input type="file" class="form-control fh5co_contact_text_box" name="supplier_image2" />
+                    </div>
+                     <div class="col-12 py-3">
+                        <label>Supplier Image3</label>
+                        <input type="file" class="form-control fh5co_contact_text_box" name="supplier_image3" />
+                    </div>
+                     <div class="col-12 py-3">
+                        <label>Location</label>
+                        <select class="form-control" name="location"  data-rule="required" data-msg="Please write something for us" >
+                        <option>--Choose Location--</option>
+                        {% for i in location %}
+                        <option value="{{i.id}}">{{i}}</option>
+                        {% endfor %}
+                         </select>
+                     </div>
+                    <div class="col-6 py-3">
+                        <label>Start Time</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_starttime" />
+                    </div>
+                    <div class="col-6 py-3">
+                        <label>Endtime</label>
+                        <input type="text" class="form-control fh5co_contact_text_box" name="supplier_endtime" />
+                    </div>
+                    <div class="col-12 py-3 text-center"> <input type="submit" class="btn contact_btn" value="Register"/> </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
